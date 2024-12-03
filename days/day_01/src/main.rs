@@ -1,6 +1,6 @@
 use std::{
   collections::{HashMap, HashSet},
-  path::PathBuf,
+  path::{Path, PathBuf},
 };
 
 #[derive(Debug, Clone)]
@@ -10,7 +10,7 @@ struct Input {
 }
 
 impl Input {
-  fn from_file(input_file_path: &PathBuf) -> Self {
+  fn from_file(input_file_path: &Path) -> Self {
     let input_file_string = std::fs::read_to_string(input_file_path)
       .expect("failed to read input file");
 
@@ -90,10 +90,10 @@ impl Input {
 }
 
 fn main() {
-  let input = Input::from_file(&["inputs", "day_01"].iter().collect());
+  let input = Input::from_file(PathBuf::from("inputs/day_01.txt").as_path());
 
-  println!("part_1: {}", input.clone().part_1());
-  println!("part_2: {}", input.clone().part_2());
+  println!("Part 1: {}", input.clone().part_1());
+  println!("Part 2: {}", input.clone().part_2());
 }
 
 #[cfg(test)]
